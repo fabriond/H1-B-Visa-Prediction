@@ -63,8 +63,16 @@ const PredictionForm: React.FC = () => {
     let startDate = startDateRef.current?.state.selectedDate;
     let endDate = endDateRef.current?.state.selectedDate;
     let dateDiffInTime;
+
     if(endDate && startDate){
-      dateDiffInTime = Math.abs(endDate.getTime() - startDate.getTime());
+      if(endDate < startDate){
+        setAlertInfo({
+          success: false, 
+          content: "Employment End Date must be after Employment Start Date"
+        });
+        return null;
+      }
+      dateDiffInTime = endDate.getTime() - startDate.getTime();
     } else{
       dateDiffInTime = 0;
     }
@@ -72,6 +80,7 @@ const PredictionForm: React.FC = () => {
   };
 
   const submit = () => {
+    setAlertInfo({success: alertInfo.success, content: ""})
     axios.post<Prediction>('https://h1b-prediction-backend.herokuapp.com/', {
       "occupation_code": occupationRef.current?.state.selected,
       "full_time_position": isFulltime,
