@@ -81,7 +81,7 @@ const PredictionForm: React.FC = () => {
 
   const submit = () => {
     setAlertInfo({success: alertInfo.success, content: ""})
-    axios.post<Prediction>('https://h1b-prediction-backend.herokuapp.com/', {
+    axios.post<Prediction>(process.env.REACT_APP_BACKEND_URL + '/', {
       "occupation_code": occupationRef.current?.state.selected,
       "full_time_position": isFulltime,
       "worksite_state": workStateRef.current?.state.selected,

@@ -27,7 +27,7 @@ class OccupationPicker extends Component<ComponentProps> {
   componentDidMount(){
     // Basis for the next bit of code: https://github.com/axios/axios/issues/1510#issuecomment-385939438
     axios.request<Array<Occupation>>({
-      url: 'https://h1b-prediction-backend.herokuapp.com/occupations'
+      url: process.env.REACT_APP_BACKEND_URL + '/occupations'
     }).then((response) => {
       // `response` is of type `AxiosResponse<Array<Occupation>>`
       const { data } = response
