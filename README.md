@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project's production version can be found [here](https://visa-prediction.herokuapp.com/).
 
 ### Running this project locally
 To run this project locally, you'll first need to run the [backend server](https://github.com/fabriond/H1-B-Visa-Prediction-Backend) locally, and then:
